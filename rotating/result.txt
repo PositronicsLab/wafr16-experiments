@@ -1,0 +1,15 @@
+untuned 
+real	0m2.387s
+user	0m2.347s
+sys	0m0.036s
+
+tuned
+real	0m2.097s
+user	0m2.055s
+sys	0m0.036s
+
+implicit
+real	0m2.319s
+user	0m2.286s
+sys	0m0.032s
+
