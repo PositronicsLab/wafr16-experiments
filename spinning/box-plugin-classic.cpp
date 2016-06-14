@@ -37,6 +37,7 @@ void contact_callback_fn(std::vector<Constraint> e, boost::shared_ptr<void> empt
   Moby::CollisionGeometryPtr box_cg = *(box->geometries.begin());
   Moby::CollisionGeometryPtr plane_cg = *(ground->geometries.begin());
 
+  e.clear();
 
   std::vector<Point3d> p;
 

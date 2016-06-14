@@ -2,7 +2,7 @@
      a very simple test case.  -->
 
 <XML>
-  <DRIVER step-size="0.01">
+  <DRIVER step-size="0.0001">
     <camera position="0 0 10" target="0 0 0" up="0 1 0" />
     <window location="0 0" size="640 480" />
   </DRIVER>
@@ -20,7 +20,7 @@
       <!-- the box -->
       <RigidBody id="box" enabled="true" position="0 .500 0" color=".4 0 0 1" angular-velocity="0 10.000 0" visualization-id="b1">
         <InertiaFromPrimitive primitive-id="b1" />
-        <CollisionGeometry primitive-id="b1" compliant-layer-depth=".00001" />
+        <CollisionGeometry primitive-id="b1" compliant-layer-depth=".0" />
       </RigidBody>
 
       <!-- the ground -->
@@ -30,11 +30,11 @@
       </RigidBody>
 
     <!-- Setup the simulator -->
-    <TimeSteppingSimulator id="simulator" constraint-stabilization-max-iterations="0">
+    <TimeSteppingSimulator id="simulator" min-step-size="0.00001" constraint-stabilization-max-iterations="0">
       <DynamicBody dynamic-body-id="box" />
       <DynamicBody dynamic-body-id="ground" />
       <RecurrentForce recurrent-force-id="gravity"  />
-      <ContactParameters object1-id="ground" object2-id="box" epsilon="0" mu-coulomb="0.1" mu-viscous="0" friction-cone-edges="4" stiffness="0.5" />
+      <ContactParameters object1-id="ground" object2-id="box" epsilon="0" mu-coulomb="0.1" mu-viscous="0" friction-cone-edges="4" stiffness=".8" />
     </TimeSteppingSimulator>
   </MOBY>
 </XML>
