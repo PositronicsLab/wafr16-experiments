@@ -1,0 +1,4 @@
+-s=0.0001
+-mt=1
+-p=./libbox-plugin-classic.so
+

@@ -35,22 +35,23 @@ void contact_callback_fn(std::vector<Constraint> e, boost::shared_ptr<void> empt
 {
   boost::shared_ptr<Pose3d> GLOBAL;
   Moby::CollisionGeometryPtr box_cg = *(box->geometries.begin());
-  Moby::CollisionGeometryPtr plane_cg = *(plane->geometries.begin());
+  Moby::CollisionGeometryPtr plane_cg = *(ground->geometries.begin());
 
 
-  std::vector<Point3d> vertices;
+  std::vector<Point3d> p;
 
   //get all the vertices
-  box_cg->get_vertices(vertices);
+  box_cg->get_vertices(p);
   
   
   // for all vertices 
   for(std::vector<Point3d>::const_iterator i = p.begin(); i != p.end(); ++i)
   {
     std::vector<Vector3d> normals; 
-    Ravelin::Transform3d wTp = Pose3d::calc_relative_pose(*i.pose , GLOBAL);
-    Ravelin::Point3d p_w = wTp.transform_point(*i);
-    Constraint n_constraint = CollisionDetection.create_contact(box_cg,plane_cg,p_w,normals[0], dist);
+    Ravelin::Transform3d wTp = Pose3d::calc_relative_pose(i->pose , GLOBAL);
+    Point3d p_w = wTp.transform_point(*i);
+    double dist = p_w[1];
+    Constraint n_constraint = CollisionDetection::create_contact(box_cg,plane_cg,p_w,normals[0], dist);
     e.push_back(n_constraint);
   }
 

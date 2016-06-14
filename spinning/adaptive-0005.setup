@@ -1,0 +1,4 @@
+-s=0.0005
+-mt=1
+-p=./libbox-plugin-adaptive.so
+

@@ -1,2 +1,3 @@
-time moby-driver  -p=./librbox-plugin.so -mt=0.818 ../../Moby/example/events/rotating-box.xml
+#!/bin/bash
+$1/moby-regress -p=./librbox-plugin-adaptive.so -mt=1.0 adaptive.xml
 
