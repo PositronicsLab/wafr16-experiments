@@ -1,0 +1,21 @@
+1. Necessary software
+
+The experiments use the following software versions:
+
+a. Ravelin (master branch), commit hashtag 8d3299
+b. Moby (new-qp branch), commit hashtag 
+c. Pacer (fork)
+
+2. Description of experiments
+
+- multibody-CA: the "chain" experiment, with additional code for verifying
+    multibody conservative advancement
+- rotating box: the "thrown die" experiment
+
+3. Quadrupedal experiments
+
+Quadrupedal experiments with Pacer have not been added to this repository:
+significant modifications to Pacer were necessary to record changes to the
+contact manifold, and significant modifications to the Links model were
+necessary to replace the feet with spherical polyhedra. 
+ 

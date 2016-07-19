@@ -1,0 +1,18 @@
+1. File list
+
+filename			description
+-----------------------------------------------------------------------------
+hist.py				Python matplotlib script for producing a
+                                  histogram of conservative advancement steps
+multibody-with-prismatic.xml	100m, 100 link chain with prismatic joints
+multibody.xml			100m, 100 link chain
+pendulum.xml			Simple pendulum for trivial conservative
+				  advancement checks
+README                          (this file)
+test.cpp			Moby plugin for testing conservative 
+				  advancement bounds on a multibody
+
+2. Running the experiment
+
+3. Extracting data
+
