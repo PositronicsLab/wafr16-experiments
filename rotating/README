@@ -1,0 +1,16 @@
+1. File list
+
+filename			description
+-----------------------------------------------------------------------------
+adaptive.xml                    The Moby XML description of the experimental
+                                  initial conditions
+averages.m			MATLAB/Octave code to compute mean contact
+                                  manifold change times
+build-rbox-plugins.sh		simple bash script to build plugin for Moby
+rbox-plugin-adaptive.cpp        plugin for Moby to output 
+README                          (this file)
+
+2. Running the experiment
+
+3. Extracting data
+

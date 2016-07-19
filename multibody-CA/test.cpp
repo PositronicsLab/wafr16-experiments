@@ -8,6 +8,10 @@ using boost::dynamic_pointer_cast;
 using namespace Moby;
 using namespace Ravelin;
 
+// when activated, this plugin computes: CA predicted dist - actual dist
+// and sends this value, over many trials, to stdout
+// obviously, all output values should be non-negative
+
 /// sets a vector to a random value, each in [-1.0, 1.0]
 void rand_vec(VectorNd& v)
 {
@@ -43,12 +47,17 @@ void trial(shared_ptr<RCArticulatedBody> body)
   unsigned link = rand() % (links.size()-1) + 1;
   // 2. get the bounding radius from the link
   RigidBodyPtr rb = dynamic_pointer_cast<RigidBody>(links[link]); 
-  double rad = rb->geometries.front()->get_geometry()->get_bounding_radius();
+  double rad = 0.0;
+  BOOST_FOREACH(CollisionGeometryPtr cg, rb->geometries)
+    rad += (cg->get_geometry()->get_bounding_radius() + cg->get_geometry()->get_pose()->x.norm());
+
   // 3. pick a random point on the bounding radius
   Point3d p(links[link]->get_pose());
-  p[0] = (double) rand() / RAND_MAX * 2.0 * rad - rad;
-  p[1] = (double) rand() / RAND_MAX * 2.0 * rad - rad;
-  p[2] = (double) rand() / RAND_MAX * 2.0 * rad - rad;
+  p[0] = (double) rand() / RAND_MAX * 2.0 - 1.0;
+  p[1] = (double) rand() / RAND_MAX * 2.0 - 1.0;
+  p[2] = (double) rand() / RAND_MAX * 2.0 - 1.0;
+  p.normalize();
+  p *= rad;
 
   // get the point in the global frame
   Point3d p0 = Pose3d::transform_point(GLOBAL, p);
