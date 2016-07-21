@@ -3,7 +3,7 @@
 The experiments use the following software versions:
 
 a. Ravelin (master branch), commit hashtag 8d3299
-b. Moby (new-qp branch), commit hashtag 
+b. Moby (new-qp branch), commit hashtag cc348a6 
 c. Pacer (fork)
 
 2. Description of experiments

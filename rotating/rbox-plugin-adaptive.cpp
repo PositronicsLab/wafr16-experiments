@@ -1,6 +1,11 @@
  /*****************************************************************************
- * "Controller" for outputting data from the simple box examples 
+ * Moby plugin for setting up and outputting data from the die experiment 
+ * Generates the following files during a simulation run:
+ * - rke.dat: the kinetic energy of the die
+ * - telemetry.box: the position and orientation of the die c.o.m
+ * - manifold.change: the virtual time of any contact manifold changes.
  ****************************************************************************/
+
 #include <Moby/TimeSteppingSimulator.h>
 #include <Moby/RCArticulatedBody.h>
 #include <Moby/GravityForce.h>
@@ -119,7 +124,6 @@ void init(void* separator, const std::map<std::string, Moby::BasePtr>& read_map,
   sim->constraint_callback_fn = &post_contact_callback;
   srand(0);
 
-/*
   // set the position, orientation, and velocities to some random values
   Pose3d x = *box->get_pose();
   rand_pose(x);
@@ -131,6 +135,5 @@ void init(void* separator, const std::map<std::string, Moby::BasePtr>& read_map,
   // set random velocity for the box
   shared_ptr<const Pose3d> P = box->get_velocity().pose;
   box->set_velocity(rand_velocity(P));
-*/
 }
 } // end extern C

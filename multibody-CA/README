@@ -2,6 +2,7 @@
 
 filename			description
 -----------------------------------------------------------------------------
+build-test-plugin.sh            Bash script for building the plugin
 hist.py				Python matplotlib script for producing a
                                   histogram of conservative advancement steps
 multibody-with-prismatic.xml	100m, 100 link chain with prismatic joints
@@ -12,7 +13,24 @@ README                          (this file)
 test.cpp			Moby plugin for testing conservative 
 				  advancement bounds on a multibody
 
-2. Running the experiment
+2. Running the experiments:
+
+   First, build the plugin by running build-test-plugin.sh- you'll likely
+   need to edit this file for it to run correctly on your system. 
+
+   For the chain (for producing the histogram):
+   
+   $ moby-driver -mt=5 -l=3 multibody.xml 2> /tmp/out
+
+   For the chain with prismatic joints (conservative advancement stress test):
+
+   $ moby-driver -p=./libtest.so multibody-with-prismatic.xml 2> /tmp/dist
+
 
 3. Extracting data
+
+   The output from the chain with prismatic joints ('/tmp/dist') will be a 
+   series of distance measurements. Some other text output to stderr may be 
+   present in this file and will need to be removed before loading the file
+   into, e.g., GNU Octave.
 

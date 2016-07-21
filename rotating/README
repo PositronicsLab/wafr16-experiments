@@ -12,5 +12,25 @@ README                          (this file)
 
 2. Running the experiment
 
+First, build the plugin by running build-rbox-plugins.sh- you'll likely need
+to edit this file for it to run correctly on your system.
+
+  $ moby-driver -mt=10 -l=3 -p=./librbox-plugin-adaptive.so adaptive.xml 2> out
+
 3. Extracting data
 
+Multiple types of data will be output. The simulation time can be extracted
+by:
+
+  $ grep "mini_step" out > sim.steps
+
+The signed distances over time can be extracted by:
+
+  $ grep "signed distance" out > dist
+
+We used regex search and replace in vim to extract the simulation time
+and signed distances from the grep outputs.
+ 
+The times that the contact manifold changes are output automatically to
+manifold.change. No further processing need be done.
+ 
